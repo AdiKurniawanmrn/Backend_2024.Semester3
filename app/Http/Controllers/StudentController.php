@@ -88,7 +88,7 @@ class StudentController extends Controller
     }
     public function show($id)
     {
-       $dtudents = Student::find($id);
+       $students = Student::find($id);
        if ($students){
         $data=[
             'message'=>'get detail students',
