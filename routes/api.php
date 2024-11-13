@@ -16,3 +16,5 @@ Route::get('/pegawais/{id}', [PegawaiController::class, 'show']);
 Route::put('/pegawais/{id}', [PegawaiController::class, 'update']);
 Route::delete('/pegawais/{id}', [PegawaiController::class, 'destroy']);
 
+// Route untuk pencarian pegawai
+Route::get('pegawais/search', [PegawaiController::class, 'search']);
