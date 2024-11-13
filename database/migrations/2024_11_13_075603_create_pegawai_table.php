@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePegawaiTable extends Migration
+class CreatePegawaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreatePegawaiTable extends Migration
      */
     public function up()
     {
-        // Membuat tabel 'pegawai'
-        Schema::create('pegawai', function (Blueprint $table) {
-            $table->id(); // Kolom ID otomatis bertambah sebagai primary key
-            $table->string('nama'); // Kolom nama pegawai
-            $table->enum('jenis_kelamin', ['L', 'P']); // Kolom untuk jenis kelamin dengan nilai 'L' atau 'P'
-            $table->text('no_hp'); //kolom telepon
-            $table->text('alamat'); // Kolom untuk alamat pegawai
-            $table->string('email'); // Kolom untuk email pegawai
-            $table->enum('status', ['aktif', 'nonaktif']); // Kolom status pegawai dengan nilai 'aktif' atau 'nonaktif'
-            $table->date('tanggal_masuk'); // Kolom untuk tanggal masuk kerja
-            $table->date('timestamp'); // Kolom untuk tanggal masuk kerja
-            $table->timestamps(); // Kolom created_at dan updated_at otomatis
+        Schema::create('pegawais', function (Blueprint $table) {
+            $table->id();
+            $table->string('name'); // Nama Pegawai
+            $table->char('gender', 1); // Jenis Kelamin (L / P)
+            $table->string('phone'); // No HP Pegawai
+            $table->text('address')->nullable(); // Alamat Pegawai, nullable jika tidak diisi
+            $table->string('email')->unique(); // Email Pegawai
+            $table->string('status'); // Status Pegawai
+            $table->date('hired_on'); // Tanggal Masuk Kerja
+            $table->timestamps(); // created_at & updated_at
         });
     }
 
@@ -35,7 +33,6 @@ class CreatePegawaiTable extends Migration
      */
     public function down()
     {
-        // Menghapus tabel 'pegawai' jika migration di-rollback
-        Schema::dropIfExists('pegawai');
+        Schema::dropIfExists('pegawais');
     }
 }
