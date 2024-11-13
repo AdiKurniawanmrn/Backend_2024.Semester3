@@ -110,4 +110,42 @@ class PegawaiController extends Controller
 
         return response()->json($data);
     }
+     public function search(Request $request)
+    {
+        $query = Pegawai::query();
+
+        // Pencarian berdasarkan nama atau email
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->has('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        $pegawais = $query->get();
+
+        return response()->json(['data' => $pegawais]);
+    }
+
+}
+ public function search(Request $request)
+    {
+        $query = Pegawai::query();
+
+        // Pencarian berdasarkan nama atau email
+        if ($request->has('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->has('email')) {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        $pegawais = $query->get();
+
+        return response()->json(['data' => $pegawais]);
+    }
+
+
 }
