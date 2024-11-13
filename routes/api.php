@@ -18,3 +18,7 @@ Route::delete('/pegawais/{id}', [PegawaiController::class, 'destroy']);
 
 // Route untuk pencarian pegawai
 Route::get('pegawais/search', [PegawaiController::class, 'search']);
+
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
