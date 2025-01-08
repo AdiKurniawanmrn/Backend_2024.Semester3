@@ -1,12 +1,19 @@
-import express from 'express';
-import StudentController from '../controllers/StudentController.js';
+//import Studentcontroller
+const StudentController=require("../Controller/StudentController")
 
+//inport exppress
+const express = require('express')
+//membuat object router
 const router = express.Router();
 
-// Routes
+router.get('/', (req, res) => {
+    res.send('Aku nggk tau apa yang terjadi')
+  })
+//Router untuk Student
 router.get('/students', StudentController.index);
 router.post('/students', StudentController.store);
 router.put('/students/:id', StudentController.update);
 router.delete('/students/:id', StudentController.destroy);
 
-export default router;
+//export router
+module.exports = router;
