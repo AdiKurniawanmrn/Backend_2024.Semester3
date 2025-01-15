@@ -21,6 +21,8 @@ router.put('/alumni/:id',AlumniController.update);
 router.delete('/alumni/:id',AlumniController.destroy);
 router.get('/alumni/:id',AlumniController.show);
 router.get('/alumni/:name',AlumniController.search);
+router.get('/alumni/status/employed',AlumniController.employed);
+router.get('/alumni/status/unemployed',AlumniController.Unemployed);
 
 // export router
 module.exports = router;
