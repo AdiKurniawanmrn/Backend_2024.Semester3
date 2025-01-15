@@ -62,7 +62,44 @@ class Alumni {
             resolve(results);
         });
     });
-}
+  }
+  static async find(name) {
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM alumni WHERE name LIKE ?'; // Query mencari alumni berdasarkan nama
+            db.query(query, [`%${name}%`], (err, results) => {
+                if (err) {
+                    reject(err); // Menangani error jika ada
+                } else {
+                    resolve(results); // Mengembalikan hasil pencarian
+                }
+            });
+        });
+    }
+
+    static async find() {
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM alumni WHERE status = "Bekerja"'; // Query untuk alumni yang sudah bekerja
+            db.query(query, (err, results) => {
+                if (err) {
+                    reject(err); // Menangani error jika ada
+                } else {
+                    resolve(results); // Mengembalikan hasil pencarian
+                }
+            });
+        });
+    }
+    static async find() {
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM alumni WHERE status = "Tidak bekerja"'; // Query untuk alumni yang sudah bekerja
+            db.query(query, (err, results) => {
+                if (err) {
+                    reject(err); // Menangani error jika ada
+                } else {
+                    resolve(results); // Mengembalikan hasil pencarian
+                }
+            });
+        });
+    }
 
 }
 
