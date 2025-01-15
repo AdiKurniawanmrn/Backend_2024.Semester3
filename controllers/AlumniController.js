@@ -121,6 +121,37 @@ class AlumniController {
         return res.status(404).json(data);
     }
   }
+   async employed(req, res) {
+    const { status } = req.query; // Ambil nama dari query parameter
+
+    // Memanggil method static dengan await
+    const alumni = await Alumni.find(status);
+
+    // Cek apakah data ditemukan
+    if (alumni.length > 0) {
+        const data = {
+            message: "Get employed resource",
+            data: alumni,
+        };
+        return res.status(200).json(data);
+    }
+  }
+  async Unemployed(req, res) {
+    const { status } = req.query; // Ambil nama dari query parameter
+
+    // Memanggil method static dengan await
+    const alumni = await Alumni.find(status);
+
+    // Cek apakah data ditemukan
+    if (alumni.length > 0) {
+        const data = {
+            message: "Get Unemployedresource",
+            data: alumni,
+        };
+        return res.status(200).json(data);
+    }
+  }
+
 
 }
 
